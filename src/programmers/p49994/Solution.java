@@ -27,6 +27,7 @@ public class Solution {
             if (!isValid(nx, ny)) {
                 continue;
             }
+            // 사용한 경로는 양방향 쪽에서 이동해도 모두 하나임
             strMove.add(x + " " + y + " " + nx + " " + ny);
             strMove.add(nx + " " + ny + " " + x + " " + y);
             x = nx;
