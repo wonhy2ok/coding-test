@@ -10,7 +10,7 @@ public class Solution {
         stack.push(max);
         for (int i = 1; i < progresses.length; i++) {
             double progress = Math.ceil((double)(100 - progresses[i]) / speeds[i]);
-            if (max > progress) {
+            if (max >= progress) {
                 stack.push(progress);
             } else {
                 int cnt = 0;
@@ -18,6 +18,7 @@ public class Solution {
                     stack.pop();
                     cnt++;
                 }
+                max = progress;
                 stack.push(progress);
                 lstAnswer.add(cnt);
             }
@@ -33,7 +34,13 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        System.out.println(sol.solution(new int[] {93, 30, 55}, new int[] {1, 30, 5}));
-        System.out.println(sol.solution(new int[] {95, 90, 99, 99, 80, 99}, new int[] {1, 1, 1, 1, 1, 1}));
+        int[] aa = sol.solution(new int[] {93, 30, 55}, new int[] {1, 30, 5});
+        Arrays.stream(aa).forEach(System.out::println);
+        System.out.println("-----");
+        int[] bb = sol.solution(new int[] {95, 90, 99, 99, 80, 99}, new int[] {1, 1, 1, 1, 1, 1});
+        Arrays.stream(bb).forEach(System.out::println);
+        System.out.println("-----");
+        int[] cc = sol.solution(new int[] {1, 1, 1, 10, 99, 99}, new int[] {1, 1, 1, 1, 1, 1});
+        Arrays.stream(cc).forEach(System.out::println);
     }
 }
